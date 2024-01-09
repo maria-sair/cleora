@@ -1,9 +1,9 @@
 .. _running:
 
-Running configuration
+Cleora configuration
 ====================== 
 
-This page details how to use the Cleora run command to define the embedding resources at runtime.
+This page shows how to configure and run Cleora.
 
 Synopsis
 --------
