@@ -51,20 +51,20 @@ Configuration Options
 
      - **complex:** The column contains multiple entities (e.g., products, brands, transactions); in TSV format entities within the same column should be separated by spaces, in JSON format they should nbe stored in an array. 
      
-     ::
+      ::
 
-      Example: There are two columns in data, one column stores user id and 
-      other colum stores all products bought by this user. The products 
-      column is then a complex column.  
+         Example: There are two columns in data, one column stores user id and 
+         other colum stores all products bought by this user. The products 
+         column is then a complex column.  
 
      - **reflexive:** Items in  this column interacts with itself. Each reflexive column will result in the seperate graph and seperate output file. 
 
-     :: 
+      :: 
 
-      Example: There is a column in data storing all products from a one 
-      basket. In created graph all each product from a basked is connected 
-      with any other product in this basket. The column is connected with 
-      clique expansion of hyperedges.  
+         Example: There is a column in data storing all products from a one 
+         basket. In created graph all each product from a basked is connected 
+         with any other product in this basket. The column is connected with 
+         clique expansion of hyperedges.  
      
      - **ignore:** The column won't be included in any graph and no output file is created for this field  
 
@@ -106,7 +106,7 @@ Configuration Options
     - **Description:** Specifies the output directory for files with generated embeddings.  
 
 11. Output Format 
- 
+
     - **Option:** ``-f``  
     - **Description:** Sets the format of the output file. Possible formats are ``.txt`` (text file) and ``.npy`` (numpy).  
 
