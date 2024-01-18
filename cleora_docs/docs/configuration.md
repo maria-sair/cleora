@@ -162,14 +162,15 @@ chmod +x cleora
 > **Note:** Before the first run, ensure that the Cleora binary file has execute permissions (`chmod +x`). 
 
 ## Output Format
-Cleora outputs a file for each relation configured based on columns in data and provided columns modifiers. For details see [Cleora Algorithm Overview](cleora_algorithm.md). Outpt files is saved in current location or under `--output-directory`. Each row in the file consist of:
+Cleora outputs a file for each relation configured based on columns in data and provided columns modifiers. For details see [Cleora Algorithm Overview](cleora_algorithm.md). Output files are saved in the current location or under `--output-directory`. Each row in the file consists of:
 
-- entity id — the id of the entity for which embedding is generated; this is the first number in a row
-- number of nodes — how many nodes for given entity id were created; this is the second number in a row
-- embedding —  the embeddign generated for a given entity id; all subsequent numbers
+- Entity ID — the ID of the entity for which the embedding is generated; this is the first number in a row.
+- Number of nodes — how many nodes were created for the given entity ID; this is the second number in a row.
+- Embedding — the embedding generated for a given entity ID; all subsequent numbers.
 
-**Example:**  
-We use Cleora to create embeddings for `product` column. We get the output file where each row stores product id, information how many times the product occured in input data (which translates to number of nodes), and the embedding of this particular product:
+Example:
+We use Cleora to create embeddings for the `product` column. We get the output file where each row stores the product ID, information about how many times the product occurred in the input data (which translates to the number of nodes), and the embedding of this particular product:
+
 
 ```
 1388 120 0.03775605 -0.00534315 -0.07677672 -0.033221997 -0.11690934 0.07979556 -0.047545113 0.04019881 0.11354096 0.09381865 0.0139150405 -0.041348357 
