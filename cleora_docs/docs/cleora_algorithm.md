@@ -112,7 +112,7 @@ Embeddings training proceeds separately for each matrix M:
 - 2-D array is initilized — matrix T0, which is our embedding matrix.  
 - the matrix M is then multiplied by T0 to create a new matrix T1
 - T1 matrix is L2-normalized 
-Depending on the target number of iterations the T1 matrix object is either returned as program output and printedto file, or fed for next iterations of multiplication against the matrix M object.     
+Depending on the target number of iterations the T1 matrix object is either returned as program output and printed to file, or fed for next iterations of multiplication against the matrix M object.     
 
 Matrix multiplication against each column of matrix T is done in a separate thread. The obtained columns of the new matrix
 T are subsequently merged into the full matrix. Similarly, L2-normalization is performed in multithreaded fashion across matrix columns.  

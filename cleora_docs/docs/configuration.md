@@ -66,7 +66,7 @@ Weight: 10
 
    - **Allowed combinations:** `transient`, `complex`, `transient::complex`, `reflexive::complex`.
 
-   The picture below presents data examples with column configurations and resulting graphs. Input file required for this example should consist TAB-separated column, and values within one column row should be separated by spaces:
+   The picture below presents data examples with column configurations and resulting graphs. Input file required for this example should consist TAB-separated columns, and space-seperated values within one column row:
 
    ```
    u1 <\t> p1 p2 p3
@@ -85,6 +85,9 @@ Weight: 10
    - **Option:** `--relation-name` or `-r`
    - **Description:** Sets the name of the relation for output file name generation.
    - **Default:** `emb`
+ 
+   **Example:**  
+   The file with embeddings, generated based on two columns `user` and `product`, is by default called `emb__user__product.out`. When we set `--relation-name` to `purchase`, the file will be called `purchase__user__product.out`.
 
 **Prepend Field Name**  
 
@@ -92,6 +95,19 @@ Weight: 10
    - **Description:** Determines whether to add the field name to the entity identifier in the output.
    - **Possible values:** `0` or `1`
    - **Default:** `0`
+
+   **Example:**   
+   Consider an example of embeddings generated for the `product` column. In each row of the output file, we have the product identifier, the number of nodes with this product (indicating in how many rows of our data the product occurred), and the generated embedding:
+
+   ```
+   1388 120 0.03775605 -0.00534315 -0.07677672 -0.033221997 -0.11690934 0.07979556 -0.047545113 0.04019881 0.11354096 0.09381865 0.0139150405 -0.041348357 
+   ```
+   where the first number is the product ID, the second is the number of nodes, and the subsequent numbers comprise the embedding vector.
+
+   If we set --prepend-field-name to 1, we will get:
+   ```
+   product__1388 120 0.03775605 -0.00534315 -0.07677672 -0.033221997 -0.11690934 0.07979556 -0.047545113 0.04019881 0.11354096 0.09381865 0.0139150405 -0.041348357 
+   ```
 
 **Log Every N**  
 
@@ -145,3 +161,16 @@ chmod +x cleora
 
 > **Note:** Before the first run, ensure that the Cleora binary file has execute permissions (`chmod +x`). 
 
+## Output Format
+Cleora outputs a file for each relation configured based on columns in data and provided columns modifiers. For details see [Cleora Algorithm Overview](cleora_algorithm.md). Outpt files is saved in current location or under `--output-directory`. Each row in the file consist of:
+
+- entity id — the id of the entity for which embedding is generated; this is the first number in a row
+- number of nodes — how many nodes for given entity id were created; this is the second number in a row
+- embedding —  the embeddign generated for a given entity id; all subsequent numbers
+
+**Example:**  
+We use Cleora to create embeddings for `product` column. We get the output file where each row stores product id, information how many times the product occured in input data (which translates to number of nodes), and the embedding of this particular product:
+
+```
+1388 120 0.03775605 -0.00534315 -0.07677672 -0.033221997 -0.11690934 0.07979556 -0.047545113 0.04019881 0.11354096 0.09381865 0.0139150405 -0.041348357 
+```
