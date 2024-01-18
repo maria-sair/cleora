@@ -5,11 +5,12 @@ Weight: 10
 
 ## Key technical features of Cleora embeddings
 
-The embeddings produced by Cleora differ significantly from those produced by systems like Node2vec, Word2vec, DeepWalk, and others, characterized by several key properties:
+The embeddings produced by Cleora differ significantly from those produced by systems like Node2vec, Word2vec, DeepWalk, and others. 
+They are characterized by several key properties characterized by
+ several key properties:
 
 - **Efficiency** - Cleora is two orders of magnitude faster than Node2Vec or DeepWalk.
 - **Inductivity** - Cleora's embeddings of an entity are defined only by interactions with other entities, allowing vectors for new entities to be computed on-the-fly.
-- **Updatability** - Refreshing a Cleora embedding for an entity is a very fast operation, enabling real-time updates without retraining.
 - **Stability** - All starting vectors for entities are deterministic, meaning, that Cleora embeddings on similar datasets will be similar. Methods like Word2vec, Node2vec, or DeepWalk yield different results with each run.
 - **Cross-dataset compositionality** - Due to the stability of Cleora embeddings, embeddings of the same entity on multiple datasets can be combined by averaging, yielding meaningful vectors.
 - **Dim-wise independence** - The process producing Cleora embeddings ensures that every dimension is independent of others. This allows for an efficient and low-parameter method for combining multi-view embeddings with Conv1d layers.

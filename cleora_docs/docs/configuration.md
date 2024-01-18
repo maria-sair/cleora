@@ -17,7 +17,12 @@ Weight: 10
 **File Type**  
 
    - **Option:** `--type` or `-t`
-   - **Description:** Specifies the input file type. Supported types are `.tsv` (tab-separated values) and `.json`.
+   - **Description:** Specifies the input file type.
+   - **Possible values:** `tsv` or `json`
+
+!!! info   
+
+    In a TSV file, columns should be separated by TABs, and values within one column's row should be separated by spaces. In the JSON format, multiple values are provided as an array.  
 
 **Dimension**  
 
@@ -61,51 +66,81 @@ Weight: 10
 
    - **Allowed combinations:** `transient`, `complex`, `transient::complex`, `reflexive::complex`.
 
-   The picture below presents data examples with column configurations and resulting graphs:
+   The picture below presents data examples with column configurations and resulting graphs. Input file required for this example should consist TAB-separated column, and values within one column row should be separated by spaces:
+
+   ```
+   u1 <\t> p1 p2 p3
+   u2 <\t> p2 p4
+   ```
 
    ![examples use case of column modifiers](_static/cleora-columns.png)
-
-**Relation Name**  
-
-   - **Option:** `--relation-name` or `-r`
-   - **Description:** Sets the name of the relation for output file name generation.
-
-**Prepend Field Name**  
-
-   - **Option:** `--prepend-field-name` or `-p`
-   - **Description:** Determines whether to add the field name to the entity identifier in the output.
-
-**Log Every N**  
-
-   - **Option:** `--log-every-n` or `-l`
-   - **Description:** Logs output every N lines.
-
-**In-Memory Embedding Calculation**  
-
-   - **Option:** `--in-memory-embedding-calculation` or `-e`
-   - **Description:** Chooses between calculating embeddings in memory (0) or using memory-mapped files for efficiency (1). Default is 0.
 
 **Output Directory**  
 
    - **Option:** `--output-dir` or `-o`
    - **Description:** Specifies the output directory for files with generated embeddings.
 
+**Relation Name**  
+
+   - **Option:** `--relation-name` or `-r`
+   - **Description:** Sets the name of the relation for output file name generation.
+   - **Default:** `emb`
+
+**Prepend Field Name**  
+
+   - **Option:** `--prepend-field-name` or `-p`
+   - **Description:** Determines whether to add the field name to the entity identifier in the output.
+   - **Possible values:** `0` or `1`
+   - **Default:** `0`
+
+**Log Every N**  
+
+   - **Option:** `--log-every-n` or `-l`
+   - **Description:** Logs output every N lines.
+   - **Default:** 10000
+
+**In-Memory Embedding Calculation**  
+
+   - **Option:** `--in-memory-embedding-calculation` or `-e`
+   - **Description:** Chooses between calculating embeddings in memory (0) or using memory-mapped files for efficiency (1). 
+   - **Possible values:** `0` or `1`
+   - **Default:** `1`
+
 **Output Format**  
 
    - **Option:** `-f`
-   - **Description:** Sets the format of the output file. Possible formats are `.txt` (text file) and `.npy` (numpy).
+   - **Description:** Sets the format of the output file. Possible formats are `.txt` (`textfile`) and `.npy` (`numpy`). 
+   - **Possible values:** `textfile` or `numpy`
+   - **Default:** `textfile`
+
+**Seed**
+
+   - **Option:** `--seed` or `-s`
+   - **Description:** sets integer seed for embedding initialization
+
+**Version**
+
+   - **Option:** `--version` or `-v`
+   - **Description:** Prints Cleora version information. 
 
 ## Examples of Cleora Configuration
 
+For input file1.tsv:
+```
+user1    product7 product2 product10
+user2    product11
+user3    product1 product2 product11 product13
+```
+run:
 ```bash
 chmod +x cleora
 ./cleora --type tsv \
-         --columns="complex::reflexive::a b complex::c" \
+         --columns="user complex::reflexive::product" \
          --dimension 128 \
          --number-of-iterations 5 \
          --relation-name=test_relation_name \
          --prepend-field-name 0 \
-         file1.tsv file2.tsv
+         file1.tsv 
 ```
 
 > **Note:** Before the first run, ensure that the Cleora binary file has execute permissions (`chmod +x`). 
