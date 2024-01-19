@@ -9,16 +9,8 @@ weigth: 20
 
 Cleora is a general-purpose model for efficient, scalable learning of stable and inductive entity embeddings for heterogeneous relational data.
 
-**Read the whitepaper:**[Cleora: A Simple, Strong and Scalable Graph Embedding Scheme](https://arxiv.org/pdf/2102.02302.pdf)  
-**Read the blog post:**[Cleora: how we handle billion-scale graph data (and you can too)](https://sair.synerise.com/cleora-how-we-handle-billion-scale-graph-data-and-you-can-too-2/)
-
-## Cleora documentation:
-
-1. [Cleora Configuration](configuration.md)
-2. [Cleora Algoritm Overview](cleora_algorithm.md)
-3. [Hypergraph Expansion Methods](hypergraph_expansion.md)
-4. [Cleora Embeddings Features](why_cleora.md)
-5. [Cleora Embeddings Use-cases](use_cases.md)
+**Read the whitepaper:** [Cleora: A Simple, Strong and Scalable Graph Embedding Scheme](https://arxiv.org/pdf/2102.02302.pdf)  
+**Read the blog post:** [Cleora: how we handle billion-scale graph data (and you can too)](https://sair.synerise.com/cleora-how-we-handle-billion-scale-graph-data-and-you-can-too-2/)
 
 # Cleora PRO 
 For Cleora PRO version visit our [website](https://www.cleora.ai/).
