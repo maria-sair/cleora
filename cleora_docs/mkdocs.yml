@@ -8,7 +8,12 @@ site_description: >-
 copyright: Copyright &copy; Synerise S.A.
 
 theme:
-  name: readthedocs
+    name: null
+    locale: en
+    custom_dir: 'cinder/cinder'
+
+# theme:
+  # name: readthedocs
   # name: material
   # custom_dir: overrides
   # language: en

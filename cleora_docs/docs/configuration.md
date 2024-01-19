@@ -9,7 +9,7 @@ Weight: 10
 
 ## Configuration Options
 
-**Input Files**  
+**Input Files** 
 
  - **Usage:** Positional arguments `[inputs]...` 
  - **Description:** Paths to input files  
@@ -63,22 +63,25 @@ Weight: 10
        The column is connected with clique expansion of hyperedges.
 
      - `ignore` — The column won't be included in any graph and no output file is created for this field.
+       **Example:**  
+       There is a column in our data storing user IDs and another storing email addresses. We can use the user ID column to create a graph and ignore the redundant email column.
 
    - **Allowed combinations:** `transient`, `complex`, `transient::complex`, `reflexive::complex`.
 
-   The picture below presents data examples with column configurations and resulting graphs. Input file required for this example should consist TAB-separated columns, and space-seperated values within one column row:
+   **Example of column configuration:**  
+   The picture below presents data example with column configurations and resulting graphs. Input file required for this example should consist of TAB-separated columns, and space-seperated values within one column row:
 
    ```
    u1 <\t> p1 p2 p3
    u2 <\t> p2 p4
    ```
 
-   ![examples use case of column modifiers](_static/cleora-columns.png)
+   ![example use case of column modifiers](_static/cleora-columns.png)
 
 **Output Directory**  
 
    - **Option:** `--output-dir` or `-o`
-   - **Description:** Specifies the output directory for files with generated embeddings.
+   - **Description:** Specifies the output directory for generated embeddings files.
 
 **Relation Name**  
 
@@ -104,7 +107,7 @@ Weight: 10
    ```
    where the first number is the product ID, the second is the number of nodes, and the subsequent numbers comprise the embedding vector.
 
-   If we set --prepend-field-name to 1, we will get:
+   If we set `--prepend-field-name` to `1`, we will get:
    ```
    product__1388 120 0.03775605 -0.00534315 -0.07677672 -0.033221997 -0.11690934 0.07979556 -0.047545113 0.04019881 0.11354096 0.09381865 0.0139150405 -0.041348357 
    ```
@@ -118,7 +121,7 @@ Weight: 10
 **In-Memory Embedding Calculation**  
 
    - **Option:** `--in-memory-embedding-calculation` or `-e`
-   - **Description:** Chooses between calculating embeddings in memory (0) or using memory-mapped files for efficiency (1). 
+   - **Description:** Chooses between calculating embeddings in memory (`0`) or using memory-mapped files for efficiency (`1`). 
    - **Possible values:** `0` or `1`
    - **Default:** `1`
 
@@ -159,19 +162,22 @@ chmod +x cleora
          file1.tsv 
 ```
 
-> **Note:** Before the first run, ensure that the Cleora binary file has execute permissions (`chmod +x`). 
+!!! Note 
+
+    Before the first run, ensure that the Cleora binary file has execute permissions (`chmod +x`). 
 
 ## Output Format
-Cleora outputs a file for each relation configured based on columns in data and provided columns modifiers. For details see [Cleora Algorithm Overview](cleora_algorithm.md). Output files are saved in the current location or under `--output-directory`. Each row in the file consists of:
+Output files are saved in the current location or under `--output-directory`. Each row in the file consists of:
 
 - Entity ID — the ID of the entity for which the embedding is generated; this is the first number in a row.
 - Number of nodes — how many nodes were created for the given entity ID; this is the second number in a row.
 - Embedding — the embedding generated for a given entity ID; all subsequent numbers.
 
-Example:
-We use Cleora to create embeddings for the `product` column. We get the output file where each row stores the product ID, information about how many times the product occurred in the input data (which translates to the number of nodes), and the embedding of this particular product:
+**Example:**  
+We use Cleora to create embeddings for the `product` column. We get the output file where each row stores: the product ID, information about how many times the product occurred in the input data (which translates to the number of nodes), and the embedding of this particular product.
 
 
 ```
 1388 120 0.03775605 -0.00534315 -0.07677672 -0.033221997 -0.11690934 0.07979556 -0.047545113 0.04019881 0.11354096 0.09381865 0.0139150405 -0.041348357 
 ```
+Cleora produces a file for each relation configured based on columns in data and provided columns modifiers. For details see [Cleora Algorithm Overview](cleora_algorithm.md). 

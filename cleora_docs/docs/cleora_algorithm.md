@@ -3,6 +3,8 @@ Title: Cleora Algorithm
 Weight: 10
 ---
 
+![Cleora logo](_static/cleora.png)
+
 Cleora is a general-purpose model for efficient, scalable learning of stable and inductive entity embeddings for heterogeneous relational data. Cleora embeds entities in n-dimensional spherical spaces utilizing extremely fast stable, iterative random projections, which allows for unparalleled performance and scalability.
 
 Types of data which can be embedded include for example:
@@ -84,7 +86,8 @@ we get 4 combinations:
 At the beginning, we insert the total number of combinations (in this case 4). Then we add another 3 combinations from the second row of the input.  
 
 Each pair in `P` represents a different type of relation, for example, user bought product, product has a brand, user bought something from a brand. For each such pair of columns we create a separate matrix `M` as a `SparseMatrix` (the matrices `M` will usually hold mostly zeros). Each matrix `M` is produced in a separate thread in a stepwise fashion. The rows of matrix `P` are broadcasted to all matrix `M` objects, and each matrix `M` object reads the buffer selecting the appropriate values, updating its content.   
-**For example:** Matrix M3 (users and products) reads the hashes from column 1 storing hashes of user ids and column 2 storing hashes of product ids. After reading the first vector:
+**For example:**   
+Matrix M3 (users and products) reads the hashes from column 1 storing hashes of user ids and column 2 storing hashes of product ids. After reading the first vector:
 
 ```
 [4, U1hash, P1hash, B1hash]

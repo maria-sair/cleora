@@ -32,21 +32,21 @@ Cleora needs to break down all existing hyperedges into edges as the algorithm r
 
 ## Clique Expansion
 
-- Each hyperedge is transformed into a clique - a subgraph where each pair of nodes is connected with an edge. The space/time complexity of this approach is:
+Each hyperedge is transformed into a clique - a subgraph where each pair of nodes is connected with an edge. The space/time complexity of this approach is:
 
-  $$ O(|V| \times d + |E| \times k^2) $$
+$$ O(|V| \times d + |E| \times k^2) $$
 
-  where |*E*| is the number of hyperedges and *k* is the maximal width of hyperedge from the hypergraph.
+where |*E*| is the number of hyperedges and *k* is the maximal width of hyperedge from the hypergraph.
 
-  With the usage of cliques, the number of created edges can be significant but guarantees better fidelity to the original hyperedge relationship. We apply this scheme to smaller graphs.
+With the usage of cliques, the number of created edges can be significant but guarantees better fidelity to the original hyperedge relationship. We apply this scheme to smaller graphs.
 
 ![examples use case of column modifiers](_static/hypergraph-expansion-for-each-hyperedge.png)
 
 ## Star Expansion
 
-- An extra node is introduced which links to the original nodes contained by a hyperedge. The space/time complexity of this approach is:
+An extra node is introduced which links to the original nodes contained by a hyperedge. The space/time complexity of this approach is:
 
-  $$ O((|V|+|E|) \times d + |E|k) $$
+$$ O((|V|+|E|) \times d + |E|k) $$
 
-  Here, we must take into account the time and space required to embed an extra entity for each hyperedge, but we save on the number of created edges, which would be only *k* for each hyperedge. This approach is suited for large graphs.
+Here, we must take into account the time and space required to embed an extra entity for each hyperedge, but we save on the number of created edges, which would be only *k* for each hyperedge. This approach is suited for large graphs.
 
